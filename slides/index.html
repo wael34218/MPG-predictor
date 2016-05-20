@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Miles Per Gallon Predictor</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Miles Per Gallon Predictor">
+  <meta name="author" content="Wa'el Farhan">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Miles Per Gallon Predictor</h1>
+    <h2>Predicting through mtcars dataset</h2>
+    <p>Wa'el Farhan<br/>IT dude</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Predicting car gas consumption</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The application is made to make the people aware of their car fuel consumption. And they will be able to compare car fuel consumption when buying new car.</p>
+
+<p>This appllication predicts the miles per gallon. User will be able to enter the 4 different attributes (Weight, Number of Cylinders, Horsepower and transmission type either automatic or manual).</p>
+
+<p>The system will then calculate the predicted miles per gallon based on linear regression model made on &#39;mtcars&#39; dataset.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How it operates</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li><p>First, the application loads the mtcars dataset and fits a model for predicting car consumption based on 4 features: </p>
+
+<ul>
+<li>Weight (lb/1000)</li>
+<li>Number of cylinders</li>
+<li>Gross horsepower</li>
+<li>Transmission (Automatic or Manual)</li>
+</ul></li>
+<li><p>Second, it will allow the user to enter the 4 attributes for a specific car.</p></li>
+<li><p>Finally, it will display the miles per gallon estimated for that car.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Prediction Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The model looks like this:</p>
+
+<pre><code class="r">model &lt;- lm(mpg ~ wt + cyl + hp + am, data = mtcars)
+model$coefficients
+</code></pre>
+
+<pre><code>## (Intercept)          wt         cyl          hp          am 
+##    36.14654    -2.60648    -0.74516    -0.02495     1.47805
+</code></pre>
+
+<p>The application will then work in reactive mode calculating consumption based on user input.</p>
+
+<pre><code class="r">c &lt;- model$coefficients
+c[1] + c[2] * input$wt + c[3] * input$cyl + c[4] * input$hp + c[5] * cond
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This simple application could be useful to anyone interested in buying a new car. It can be extended to include further features to make it more accurate.</p>
+
+<h3>Thank you</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Predicting car gas consumption'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='How it operates'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Prediction Model'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Summary'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
